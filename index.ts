@@ -10,27 +10,35 @@ function countText(text){
   return obj;
 }
 
-
+//fonction de tri par ordre d'occurence de charactères
 function tri(callback) {
   let tri = [];
   for(const char in callback){
     tri.push([char, callback[char]])
   }
   const final = tri.sort((a, b) => {
-    return b[1] - a[1];
+    return a[1] - b[1];
   });
   return final
 }
 
 
-/*
-function generateTree(callback) {
-  for(let j = 0; j < callback.length; j++){
-    
+function generateTree() {
+  let tree = [];
+  const result = tri(countText(example));
+  //separated line for readability
+  function add() {
+    let segment = []
+    for(let i = 0; i < 2; i++){
+     const heap = result.splice(Math.min(result[i]),1)
+     segment.push(heap)
+  }
+
+  //flat() important to remember for removing nested array !
+  return segment.flat();
   }
   
-
+  return add()
 }
-*/
 
-console.log(tri(countText(example)));
+console.log(generateTree());
