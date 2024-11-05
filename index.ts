@@ -27,7 +27,7 @@ function generateTree() {
   let tree = [];
   const result = tri(countText(example));
   //separated line for readability
-  function add() {
+    function add() {
     let segment = []
     for(let i = 0; i < 2; i++){
      const heap = result.splice(Math.min(result[i]),1)
@@ -35,10 +35,17 @@ function generateTree() {
   }
 
   //flat() important to remember for removing nested array !
-  return segment.flat();
+  const flatened = segment.flat();
+  return flatened[0][1] +  flatened[1][1]
   }
   
-  return add()
+  while(result.length !== 0){
+  tree.push(add());
+  }
+
+
+  return tree.flat();
+  
 }
 
 console.log(generateTree());
