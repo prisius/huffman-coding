@@ -48,26 +48,57 @@ function generateTree() {
   return tree.flat();
 }
 
+/*
 function generateTree2() {
   let tree = [];
   let leaf = [];
   const result = tri(countText(example));
 
-  while(result !== []){
+  while(result.length !== 0){
     for(let i = 0; i < 2; i++){
       //shift() remove the first element of the array and returns it
       const char = result.shift()
-      leaf.push(char);
+      leaf.push(char[1])
+      tree.push([char[0], char[1]]);
     }
     const sum = leaf[leaf.length - 2] + leaf[leaf.length - 1];
-    tree.push(leaf[leaf.length -2 ], leaf[leaf.length - 1])
+    //define a condition to sort the number left to right
     leaf = []; 
     tree.push(sum) 
   }
   return tree;
+}
+
+*/
+
+
+function huffman() {
+  let alternance;
+  let huffmanList = [];
+  const list = generateTree2();
+  for(let i = 0; i < list.length; i++){
+    huffmanList.push(list[i])
+    alternance ? list[i] = 0 : list[i]= 1;
+    alternance = !alternance;
+    huffmanList.push(list[i])
+    
+  }
+  return huffmanList
+
+}
+
+function assignNumber() {
+  const huffman = huffman();
+  for(let i = 0; i < huffman.length; i % 2 == 0){
+
+
+
+  }
 
 }
 
 
+console.log(tri(countText(example)))
 console.log(generateTree2())
+console.log(huffman())
 
